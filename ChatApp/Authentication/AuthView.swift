@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AuthView.swift
 //  ChatApp
 //
 //  Created by Angel Bitsov on 8/19/25.
@@ -7,9 +7,12 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct AuthView: View {
     
     @State private var selectedOption: Int = 0
+    
+    @State private var username: String = ""
+    @State private var password: String = ""
     
     var body: some View {
         NavigationStack {
@@ -19,6 +22,12 @@ struct ContentView: View {
                     Text("Sign Up").tag(1)
                 }
                 .pickerStyle(.segmented)
+                Group {
+                    TextField("Enter your username or email", text: $username)
+                    SecureField("Enter Password", text: $password)
+                }
+                .padding(5)
+                .textFieldStyle(.roundedBorder)
             }
             .navigationTitle("Create Account")
             .padding()
@@ -27,5 +36,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    AuthView()
 }
+
